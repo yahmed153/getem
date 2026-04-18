@@ -90,8 +90,8 @@ public class GitemApiRestControllerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
-                .jsonPath("$.userName").isEqualTo("octocat")
-                .jsonPath("$.displayName").isEqualTo("The Octocat")
+                .jsonPath("$.user_name").isEqualTo("octocat")
+                .jsonPath("$.display_name").isEqualTo("The Octocat")
                 .jsonPath("$.repos").isArray()
                 .jsonPath("$.repos[0].name").exists();
     }

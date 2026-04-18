@@ -1,4 +1,4 @@
-package twcrone.gitem;
+package twcrone.gitem.integration;
 
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

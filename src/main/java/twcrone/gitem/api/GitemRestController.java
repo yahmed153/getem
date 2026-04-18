@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
-import twcrone.gitem.GitemService;
+import twcrone.gitem.integration.GitemService;
 
 @RestController
 public class GitemRestController {

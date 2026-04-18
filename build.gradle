@@ -26,7 +26,10 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-cache-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation platform('org.testcontainers:testcontainers-bom:1.19.8')
+	testImplementation 'org.testcontainers:junit-jupiter'
 }
 
 tasks.named('test') {

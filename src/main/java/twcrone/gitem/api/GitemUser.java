@@ -1,4 +1,4 @@
-package twcrone.gitem;
+package twcrone.gitem.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
@@ -11,10 +11,6 @@ public record GitemUser(
     String email,
     String url,
     @JsonProperty("created_at") String createdAt,
-    List<Repo> repos
-) {}
-
-record Repo(
-    String name,
-    String url
-) {}
+    List<GitemRepo> repos
+) {
+}

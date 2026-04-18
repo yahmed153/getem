@@ -2,6 +2,8 @@ package twcrone.gitem;
 
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
+import twcrone.gitem.api.GitemRepo;
+import twcrone.gitem.api.GitemUser;
 
 @Service
 public class GitemService {
@@ -16,8 +18,8 @@ public class GitemService {
                 "https://api.github.com/users/bob",
                 "Tue, 25 Jan 2011 18:44:36 GMT",
                 java.util.List.of(
-                        new Repo("repo-1", "https://api.github.com/repos/bob/repo-1"),
-                        new Repo("repo-2", "https://api.github.com/repos/bob/repo-2")
+                        new GitemRepo("repo-1", "https://api.github.com/repos/bob/repo-1"),
+                        new GitemRepo("repo-2", "https://api.github.com/repos/bob/repo-2")
                 )
         ));
     }

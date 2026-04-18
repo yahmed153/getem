@@ -1,6 +1,7 @@
 package twcrone.gitem.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 import java.util.List;
 
 public record GitemUser(
@@ -12,5 +13,5 @@ public record GitemUser(
     String url,
     @JsonProperty("created_at") String createdAt,
     List<GitemRepo> repos
-) {
+) implements Serializable {
 }

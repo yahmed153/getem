@@ -20,6 +20,8 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springdoc:springdoc-openapi-starter-webflux-ui:3.0.2'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-cache-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

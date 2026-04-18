@@ -1,4 +1,4 @@
-package twcrone.gitem.integration;
+package twcrone.gitem.external;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;

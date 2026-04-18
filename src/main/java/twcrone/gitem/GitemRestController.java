@@ -8,6 +8,12 @@ import reactor.core.publisher.Mono;
 @RestController
 public class GitemRestController {
 
+    private final GitemService gitemService;
+
+    public GitemRestController(GitemService gitemService) {
+        this.gitemService = gitemService;
+    }
+
     @GetMapping("/health")
     public Mono<String> getHealth() {
         return Mono.just("OK");
@@ -15,18 +21,6 @@ public class GitemRestController {
 
     @GetMapping("/user/{userId}")
     public Mono<GitemUser> getUser(@PathVariable String userId) {
-        return Mono.just(new GitemUser(
-            userId,
-            "Bob Smith",
-            "https://avatars.githubusercontent.com/u/123456?v=4",
-            "San Francisco",
-            "bob@example.com",
-            "https://api.github.com/users/bob",
-            "Tue, 25 Jan 2011 18:44:36 GMT",
-            java.util.List.of(
-                new Repo("repo-1", "https://api.github.com/repos/bob/repo-1"),
-                new Repo("repo-2", "https://api.github.com/repos/bob/repo-2")
-            )
-        ));
+        return gitemService.getem(userId);
     }
 }

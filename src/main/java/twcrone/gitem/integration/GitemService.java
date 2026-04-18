@@ -2,11 +2,8 @@ package twcrone.gitem.integration;
 
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import twcrone.gitem.api.GitemRepo;
 import twcrone.gitem.api.GitemUser;
 import twcrone.gitem.external.GithubService;
-
-import java.util.List;
 
 @Service
 public class GitemService {
@@ -20,7 +17,9 @@ public class GitemService {
     }
 
     public Mono<GitemUser> getem(String userId) {
-        return githubService.getUser(userId)
-                .map(user -> transformer.from(user, List.of()));
+        return Mono.zip(
+                githubService.getUser(userId),
+                githubService.getReposFor(userId)
+        ).map(tuple -> transformer.from(tuple.getT1(), tuple.getT2()));
     }
 }

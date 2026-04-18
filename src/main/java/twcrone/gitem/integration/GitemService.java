@@ -16,7 +16,7 @@ public class GitemService {
         this.transformer = transformer;
     }
 
-    public Mono<GitemUser> getem(String userId) {
+    public Mono<GitemUser> gitem(String userId) {
         return Mono.zip(
                 githubService.getUser(userId),
                 githubService.getReposFor(userId)

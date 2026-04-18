@@ -22,6 +22,6 @@ public class GitemRestController {
 
     @GetMapping("/user/{userId}")
     public Mono<GitemUser> getUser(@PathVariable String userId) {
-        return gitemService.getem(userId);
+        return gitemService.gitem(userId);
     }
 }

@@ -1,5 +1,6 @@
 package twcrone.gitem.integration;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import twcrone.gitem.api.GitemUser;
@@ -16,6 +17,7 @@ public class GitemService {
         this.transformer = transformer;
     }
 
+    @Cacheable(value="users")
     public Mono<GitemUser> gitem(String userId) {
         return Mono.zip(
                 githubService.getUser(userId),

@@ -27,6 +27,10 @@ public class GithubService {
     }
 
     public Mono<List<GithubRepo>> getReposFor(String userId) {
-        return Mono.just(List.of());
+        return webClient.get()
+                .uri("https://api.github.com/users/{userId}/repos", userId)
+                .retrieve()
+                .bodyToMono(String.class)
+                .map(body -> jsonMapper.readValue(body, jsonMapper.getTypeFactory().constructCollectionType(List.class, GithubRepo.class)));
     }
 }

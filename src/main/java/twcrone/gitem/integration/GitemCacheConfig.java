@@ -11,7 +11,6 @@ public class GitemCacheConfig implements CachingConfigurer {
 
     @Override
     public CacheErrorHandler errorHandler() {
-        // Return your custom implementation or the built-in LoggingCacheErrorHandler
         return new GitemCacheErrorHandler();
     }
 }

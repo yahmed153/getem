@@ -10,7 +10,7 @@ To Do:
 * Cache Tuning - For now, if there is a caching connect error, we log an error and move on without caching and try to not get hung up for too long. But we need more understanding of caching requirements, impacts, and costs to tune it properly.
 * Dig Into GitHub API - Right now we get alot of fields we don't need. With some more research I'd see if there is something to call (for repos especially) where we can specify the fields we want instead of boiling the ocean for two fields.
 * Shrink REST DTOs - Yes, I generated to get "All The Things" for now, but "Premature optimization is the root of all evil." We can always delete stuff. Much harder to have stuff you never had in case the requirements expand in the short term as they usually do.
-* Retry with Exponential Backoff and Jitter - Maybe using built in stuff the WebFlux
+* Retry with Exponential Backoff and Jitter - Maybe using built in stuff for WebFlux, Resilience4J, or Spring Retry.
 * More varied status codes - For now I'm just handling NOT_FOUND then blame GitHub, not good long term. If we successfully get the user base info but fail on repos, 206 Partial Content with no caching might be a good option to simply failing.
 * Virtual Threads - Haven't used these yet and Project Reactor/Spring WebFlux may be unnecessary, but I'm familiar with it already, and made no blocking I/O calls the GitHub simple and clean. It also should do something similar by default with Redis but didn't check.
 * Docker - Should be easy to make a Dockerfile for this project but didn't seem to add much for this

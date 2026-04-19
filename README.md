@@ -52,6 +52,8 @@ This provides Redis container for local testing.
 I prefer docker compose to simple docker build/run because you can have multiple dependencies set up for
 local runs. Cache is set to only 5 seconds by default so it can be seen in effect quickly.
 
+This service should work without caching, but if you want to test locally. You can tweak Redis timeouts in application.yaml.
+
 `docker compose up -d`
 
 Then you should be able to run the Spring boot services with:

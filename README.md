@@ -1,6 +1,8 @@
 Git em! API
 ===========
 
+
+
 The Gitem API takes a Git username and makes to Github API calls.
 
 1. Get User - https://api.github.com/users/{userId}

@@ -13,13 +13,13 @@ To Do:
 * Retry with Exponential Backoff and Jitter - Maybe using built in stuff for WebFlux, Resilience4J, or Spring Retry.
 * More varied status codes - For now I'm just handling NOT_FOUND then blame GitHub, not good long term. If we successfully get the user base info but fail on repos, 206 Partial Content with no caching might be a good option to simply failing.
 * Virtual Threads - Haven't used these yet and Project Reactor/Spring WebFlux may be unnecessary, but I'm familiar with it already, and made no blocking I/O calls the GitHub simple and clean. It also should do something similar by default with Redis but didn't check.
-* Docker - Should be easy to make a Dockerfile for this project but didn't seem to add much for this
+* Docker - Should be easy to make a Dockerfile for this project but didn't seem to add much value for this exercise.
 * Perf Testing - Obviously...nuff said
-* More Unit Tests - I tend to write too many tests then delete some but stuck. I've also used TDD but with AI that less necessary. Lately I've been embracing fast prototyping then add tests to make sure it does everything I want. Technically coverage is pretty high for the small number of tests I wrote although coverage statistics are just numbers.
-* Better Version Handling - Didn't spend much time on build.gradle and to avoid the current vulnerability in Jackson tools 3.1.0 just threw version (3.1.2) in gradle.properties.
-* Validate username - I'm leaning on Spring and @Cacheable a bit here. Its possible someone could try to cause problems that I haven't considered yet with this. These libraries are pretty good a protecting but probably would spend some time throwing lots of different crap at it as part of perf testing.
-* Understand @Cacheable More - Haven't actually used this annotation before because I wasn't allowed to or wasn't using Spring so my usage is pretty naive right now, but I assumed you would judge if I wrote my own "CachedService" wrapper.
-* Spring Actuator - Use this library or something that tells us if the Redis cache is healthy so we don't spam GitHub. Perhaps we have a poor person's backup that doesn't depend on Redis just in case.
+* More Unit Tests - I tend to write too many tests then delete some that prove unnecessary. I've also used TDD but with AI might be too slow. Lately I've been embracing fast prototyping then add tests to make sure it does everything I want. Technically coverage is pretty high for the small number of tests I wrote although coverage statistics are just numbers.
+* Better Dependency Version Handling - Didn't spend much time on build.gradle and to avoid the current vulnerability in Jackson tools 3.1.0 just threw version (3.1.2) in gradle.properties.
+* Validate username - I'm leaning on Spring and @Cacheable a bit here. Its possible someone could try to cause problems that I haven't thought much about this yet. These libraries are pretty good at protecting from bad/malicious date, but probably would spend some time throwing lots of different crap at it as part of perf testing.
+* Understand @Cacheable More - Haven't actually used this annotation before because I wasn't allowed to use it or wasn't using Spring so my understanding is pretty naive right now, but I assumed you would judge me if I wrote my own "CachedService" wrapper.
+* Spring Actuator - Yes `/health` just returns "OK" String right now. We could use Spring Actuator library or something that tells us if the Redis cache is healthy so we don't spam GitHub without alerts. We already log errors when cache is down but carry on. Perhaps we have a poor devs in-memory backup that doesn't depend on Redis just in case.
 
 
 ## Build

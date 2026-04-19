@@ -26,6 +26,30 @@ The results of these two REST calls is combined and put into the GitemUser API f
 }
 ```
 
+## Build
+
+This project use typical Gradle build commands:
+
+Build `./gradlew build`
+Test `./gradlew test`
+
+## Run locally
+
+A `docker-compose.yaml` file has been provided in the `docker` directory of this project.
+This provides Redis container and its UI for local testing.
+
+`docker compose up -d`
+
+Then you should be able to run the Spring boot services with:
+
+`./gradlew bootRun`
+
+The API can be exercised through SWAGGER UI below or with direct HTTP call:
+
+Health (returns 'OK'): http://localhost:8080/health
+
+Get User: http://localhost:8080/users/octocat
+
 ## SWAGGER API
 
 Web UI

@@ -53,7 +53,7 @@ public class GitemApiRestControllerTest {
                         .withBody(GET_OCTOCAT_REPOS)));
 
         webTestClient.get()
-                .uri("/user/{userId}", "octocat")
+                .uri("/users/{userId}", "octocat")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
@@ -69,7 +69,7 @@ public class GitemApiRestControllerTest {
                 .willReturn(ResponseDefinitionBuilder.responseDefinition()
                         .withStatus(404)));
         webTestClient.get()
-                .uri("/user/{userId}", "nobody")
+                .uri("/users/{userId}", "nobody")
                 .exchange()
                 .expectStatus().isNotFound()
                 .expectBody()
@@ -83,7 +83,7 @@ public class GitemApiRestControllerTest {
                 .willReturn(ResponseDefinitionBuilder.responseDefinition()
                         .withStatus(503)));
         webTestClient.get()
-                .uri("/user/{userId}", "octocat")
+                .uri("/users/{userId}", "octocat")
                 .exchange()
                 .expectStatus().is5xxServerError()
                 .expectBody()

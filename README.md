@@ -6,6 +6,8 @@ But I WILL tell you the additional things I would have done as I make it fully p
 in my opinion. Hopefully I've done enough to give you an idea the type of developer than I am.
 
 To Do:
+* Pagination - Right now we just grab the first page of results (default 30). Pagination should be pretty easy to do.
+* Dig In For Specifics In API - Right now we get alot of fields we don't need. With some more research I'd see if there is something to call (for repos especially) where we can specify the fields we want instead of boiling the ocean for two fields.
 * Retry with Exponential Backoff and Jitter - Maybe using built in stuff the WebFlux
 * More varied status codes - For now I'm just handling NOT_FOUND then blame GitHub, not good long term. If we successfully get the user base info but fail on repos, 206 Partial Content with no caching might be a good option to simply failing.
 * Virtual Threads - Haven't used these yet and Project Reactor maybe unnecessary, but I'm familiar with it already

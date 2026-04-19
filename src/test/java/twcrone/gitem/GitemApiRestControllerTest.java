@@ -59,6 +59,9 @@ public class GitemApiRestControllerTest {
                 .expectBody()
                 .jsonPath("$.user_name").isEqualTo("octocat")
                 .jsonPath("$.display_name").isEqualTo("The Octocat")
+                .jsonPath("$.avatar").isEqualTo("https://avatars.githubusercontent.com/u/583231?v=4")
+                .jsonPath("$.url").isEqualTo("https://api.github.com/users/octocat")
+                .jsonPath("$.created_at").isEqualTo("Tue, 25 Jan 2011 18:44:36 GMT")
                 .jsonPath("$.created_at").isEqualTo("Tue, 25 Jan 2011 18:44:36 GMT")
                 .jsonPath("$.repos").isArray()
                 .jsonPath("$.repos[0].name").exists();

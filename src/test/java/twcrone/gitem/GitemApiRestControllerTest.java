@@ -63,6 +63,19 @@ public class GitemApiRestControllerTest {
                 .jsonPath("$.repos[0].name").exists();
     }
 
+    @Test
+    void testGetUser_errorCase_GitHubApiUnavailable() {
+        wireMockServer.stubFor(WireMock.get("/users/octocat")
+                .willReturn(ResponseDefinitionBuilder.responseDefinition()
+                        .withStatus(500)));
+        webTestClient.get()
+                .uri("/user/{userId}", "octocat")
+                .exchange()
+                .expectStatus().is5xxServerError()
+                .expectBody()
+                .jsonPath("$.message").isEqualTo("Github API is not available at this time");
+    }
+
     private static final String GET_OCTOCAT = """
 {
   "login": "octocat",

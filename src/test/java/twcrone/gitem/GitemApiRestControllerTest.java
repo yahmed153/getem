@@ -64,6 +64,7 @@ public class GitemApiRestControllerTest {
                 .jsonPath("$.created_at").isEqualTo("Tue, 25 Jan 2011 18:44:36 GMT")
                 .jsonPath("$.created_at").isEqualTo("Tue, 25 Jan 2011 18:44:36 GMT")
                 .jsonPath("$.repos").isArray()
+                .jsonPath("$.repos.length()").isEqualTo(8)
                 .jsonPath("$.repos[0].name").exists();
     }
 

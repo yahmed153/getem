@@ -36,7 +36,9 @@ Test `./gradlew test`
 ## Run locally
 
 A `docker-compose.yaml` file has been provided in the `docker` directory of this project.
-This provides Redis container and its UI for local testing.
+This provides Redis container for local testing.
+I prefer docker compose to simple docker build/run because you can have multiple dependencies set up for
+local runs. Cache is set to only 5 seconds by default so it can be seen in effect quickly.
 
 `docker compose up -d`
 
@@ -49,11 +51,12 @@ The API can be exercised through SWAGGER UI below or with direct HTTP call:
 Health (returns 'OK'): http://localhost:8080/health
 
 Get User: http://localhost:8080/users/octocat
+The resource `user` takes the `username` at the end of the path.
 
 ## SWAGGER API
 
 Web UI
-`http://localhost:8080/swagger-ui/index.html`
+http://localhost:8080/swagger-ui/index.html
 
 API Docs
-`http://localhost:8080/v3/api-docs `
+http://localhost:8080/v3/api-docs

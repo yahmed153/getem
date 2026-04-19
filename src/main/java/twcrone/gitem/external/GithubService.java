@@ -25,13 +25,8 @@ public class GithubService {
         this.webClient = webClient;
     }
 
-    /*
-        endpoints:
-      user: /users/{userId}
-      repos: /users/{userId}/repos
-
-     */
     public Mono<GithubUser> getUser(String userId) {
+        log.info("Calling Github..."); // just so you can see the caching in effect for 5 seconds
         return webClient.get()
                 .uri("{baseUrl}/users/{userId}", this.baseUrl, userId)
                 .retrieve()
@@ -40,7 +35,6 @@ public class GithubService {
     }
 
     public Mono<List<GithubRepo>> getReposFor(String userId) {
-        log.info("Calling Github...");
         return webClient.get()
                 .uri("{baseUrl}/users/{userId}/repos", this.baseUrl,  userId)
                 .retrieve()

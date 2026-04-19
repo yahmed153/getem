@@ -7,10 +7,11 @@ in my opinion. Hopefully I've done enough to give you an idea the type of develo
 
 To Do:
 * Pagination - Right now we just grab the first page of results (default 30). Pagination should be pretty easy to do.
-* Dig In For Specifics In API - Right now we get alot of fields we don't need. With some more research I'd see if there is something to call (for repos especially) where we can specify the fields we want instead of boiling the ocean for two fields.
+* Dig Into GitHub API - Right now we get alot of fields we don't need. With some more research I'd see if there is something to call (for repos especially) where we can specify the fields we want instead of boiling the ocean for two fields.
+* Shrink REST DTOs - Yes, I generated to get "All The Things" for now, but "Premature optimization is the root of all evil." We can always delete stuff. Much harder to have stuff you never had in case the requirements expand in the short term as they usually do.
 * Retry with Exponential Backoff and Jitter - Maybe using built in stuff the WebFlux
 * More varied status codes - For now I'm just handling NOT_FOUND then blame GitHub, not good long term. If we successfully get the user base info but fail on repos, 206 Partial Content with no caching might be a good option to simply failing.
-* Virtual Threads - Haven't used these yet and Project Reactor maybe unnecessary, but I'm familiar with it already
+* Virtual Threads - Haven't used these yet and Project Reactor/Spring WebFlux may be unnecessary, but I'm familiar with it already, and made no blocking I/O calls the GitHub simple and clean. It also should do something similar by default with Redis but didn't check.
 * Docker - Should be easy to make a Dockerfile for this project but didn't seem to add much for this
 * Perf Testing - Obviously...nuff said
 * More Unit Tests - I tend to write too many tests then delete some but stuck. I've also used TDD but with AI that less necessary. Lately I've been embracing fast prototyping then add tests to make sure it does everything I want. Technically coverage is pretty high for the small number of tests I wrote although coverage statistics are just numbers.
@@ -18,7 +19,6 @@ To Do:
 * Validate username - I'm leaning on Spring and @Cacheable a bit here. Its possible someone could try to cause problems that I haven't considered yet with this. These libraries are pretty good a protecting but probably would spend some time throwing lots of different crap at it as part of perf testing.
 * Understand @Cacheable More - Haven't actually used this annotation before because I wasn't allowed to or wasn't using Spring so my usage is pretty naive right now, but I assumed you would judge if I wrote my own "CachedService" wrapper.
 * Spring Actuator - Use this library or something that tells us if the Redis cache is healthy so we don't spam GitHub. Perhaps we have a poor person's backup that doesn't depend on Redis just in case.
-
 
 
 ## Build

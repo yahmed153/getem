@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.DefaultUriBuilderFactory;
 
 @SpringBootApplication
 @EnableCaching
@@ -16,6 +17,10 @@ public class GitemApplication {
 
 	@Bean
 	public WebClient webClient() {
-		return WebClient.builder().build();
+		var factory = new DefaultUriBuilderFactory();
+		factory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.NONE);
+		return WebClient.builder()
+				.uriBuilderFactory(factory)
+				.build();
 	}
 }

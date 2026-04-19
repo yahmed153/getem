@@ -65,11 +65,11 @@ public class GitemApiRestControllerTest {
 
     @Test
     void testGetUser_errorCase_notFound() {
-        wireMockServer.stubFor(WireMock.get("/users/octocat")
+        wireMockServer.stubFor(WireMock.get("/users/nobody")
                 .willReturn(ResponseDefinitionBuilder.responseDefinition()
                         .withStatus(404)));
         webTestClient.get()
-                .uri("/user/{userId}", "octocat")
+                .uri("/user/{userId}", "nobody")
                 .exchange()
                 .expectStatus().isNotFound()
                 .expectBody()
@@ -81,7 +81,7 @@ public class GitemApiRestControllerTest {
     void testGetUser_errorCase_GitHubApiUnavailable() {
         wireMockServer.stubFor(WireMock.get("/users/octocat")
                 .willReturn(ResponseDefinitionBuilder.responseDefinition()
-                        .withStatus(500)));
+                        .withStatus(503)));
         webTestClient.get()
                 .uri("/user/{userId}", "octocat")
                 .exchange()

@@ -41,7 +41,7 @@ public class GitemApiRestControllerTest {
     }
 
     @Autowired
-    private WebTestClient webTestClient;// = WebTestClient.bindToServer().baseUrl("http://localhost:8080").build();
+    private WebTestClient webTestClient;
 
     @Test
     void testGetUser() {

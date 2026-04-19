@@ -6,7 +6,7 @@ But I WILL tell you the additional things I would have done as I make it fully p
 in my opinion. Hopefully I've done enough to give you an idea the type of developer than I am.
 
 To Do:
-* Pagination - Right now we just grab the first page of results (default 30). Pagination should be pretty easy to do.
+* Pagination - Right now we just grab the first page of results (default 30). Pagination should be pretty easy to do and not very interesting for this exercise.
 * Dig Into GitHub API - Right now we get alot of fields we don't need. With some more research I'd see if there is something to call (for repos especially) where we can specify the fields we want instead of boiling the ocean for two fields.
 * Shrink REST DTOs - Yes, I generated to get "All The Things" for now, but "Premature optimization is the root of all evil." We can always delete stuff. Much harder to have stuff you never had in case the requirements expand in the short term as they usually do.
 * Retry with Exponential Backoff and Jitter - Maybe using built in stuff the WebFlux

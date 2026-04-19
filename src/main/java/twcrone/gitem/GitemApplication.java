@@ -8,7 +8,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 @SpringBootApplication
-@EnableCaching
 public class GitemApplication {
 
 	public static void main(String[] args) {
@@ -23,4 +22,5 @@ public class GitemApplication {
 				.uriBuilderFactory(factory)
 				.build();
 	}
+
 }

@@ -3,6 +3,8 @@ spring:
     name: gitem
   data:
     redis:
+      timeout: 500ms
+      connect-timeout: 500ms
       host: localhost
       port: 6379
   cache:

@@ -35,7 +35,7 @@ public class GitemApiRestControllerTest {
     static void redisProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.data.redis.host", redis::getHost);
         registry.add("spring.data.redis.port", redis::getFirstMappedPort);
-        //registry.add("github.api.base-url", () -> wireMockServer.baseUrl());
+        registry.add("github.api.base-url", () -> wireMockServer.baseUrl());
     }
 
     @Autowired

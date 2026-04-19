@@ -6,7 +6,11 @@ import twcrone.gitem.api.GitemRepo;
 import twcrone.gitem.external.GithubUser;
 import twcrone.gitem.external.GithubRepo;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import static reactor.netty.http.HttpConnectionLiveness.log;
 
 @Component
 public class GitHubToGitemTransformer {
@@ -22,8 +26,22 @@ public class GitHubToGitemTransformer {
             user.location(),
             user.email(),
             user.url(),
-            user.createdAt(),
+            dateFrom(user.createdAt()),
             gitemRepos
         );
+    }
+
+    private String dateFrom(String gitHubDateString) {
+        String gitemFormattedDate = null;
+
+        try {
+            ZonedDateTime dateTime = ZonedDateTime.parse(gitHubDateString);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss 'GMT'");
+            gitemFormattedDate = dateTime.format(formatter);
+        } catch (Exception e) {
+            log.warn("Bad GitHub date format, return null: [{}]", gitHubDateString);
+        }
+
+        return gitemFormattedDate;
     }
 }

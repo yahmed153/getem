@@ -23,8 +23,24 @@ To Do:
 
 ## Build
 
-This project use typical Gradle build commands:
+This project use typical Gradle build commands and project was built with Java 21:
 
+With SDK man you can simply:
+
+`sdk install java 21.0.10-amzn`
+
+```
+❯ java -version
+openjdk version "21.0.10" 2026-01-20 LTS
+OpenJDK Runtime Environment Corretto-21.0.10.7.1 (build 21.0.10+7-LTS)
+OpenJDK 64-Bit Server VM Corretto-21.0.10.7.1 (build 21.0.10+7-LTS, mixed mode, sharing)```
+```
+You can install Gradle 9.4.1 
+```
+sdk install gradle 9.4.1
+gradle bootRun
+```
+but I recommend just using the Gradle Wrapper included.
 Build `./gradlew build`
 Test `./gradlew test`
 

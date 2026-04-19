@@ -8,6 +8,7 @@ import reactor.core.publisher.Mono;
 
 @RestControllerAdvice
 public class RestConrollerAdvice {
+
     @ExceptionHandler(RuntimeException.class)
     public Mono<ResponseEntity<ErrorResponse>> handleGeneralError(RuntimeException runtimeException) {
         ErrorResponse error = new ErrorResponse("SERVICE_UNAVAILABLE", "Github API is not available at this time");

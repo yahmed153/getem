@@ -28,7 +28,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.wiremock.integrations:wiremock-spring-boot:3.9.0'
+	testImplementation 'org.wiremock:wiremock-standalone:3.9.0'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	testImplementation platform('org.testcontainers:testcontainers-bom:1.19.8')

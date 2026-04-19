@@ -1,5 +1,7 @@
 package twcrone.gitem;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,10 +14,17 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import tools.jackson.databind.json.JsonMapper;
 
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
 @Testcontainers
 public class GitemApiRestControllerTest {
+
+    static WireMockServer wireMockServer = new WireMockServer(options().dynamicPort());
+
+    @BeforeAll
+    static void start() { wireMockServer.start(); }
 
     @Container
     static GenericContainer<?> redis = new GenericContainer<>("redis:7-alpine")
@@ -26,6 +35,7 @@ public class GitemApiRestControllerTest {
     static void redisProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.data.redis.host", redis::getHost);
         registry.add("spring.data.redis.port", redis::getFirstMappedPort);
+        //registry.add("github.api.base-url", () -> wireMockServer.baseUrl());
     }
 
     @Autowired
